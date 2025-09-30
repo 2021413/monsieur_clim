@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #161c2e;
+  --foreground: #F9FAFB;
+  --primary: #00CFFF;
+  --secondary: #FF7A00;
+  --accent: #FFD633;
+  --muted: #0078A8;
+  --text-light: #F9FAFB;
+  --text-dark: #1F2937;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  padding-top: 80px; /* Espace pour le header fixe */
+}
+
+/* Styles minimaux pour la carte */
+.leaflet-control-container.hide-controls,
+.leaflet-pane.leaflet-marker-pane {
+  display: none;
+}
+
+.leaflet-interactive {
+  outline: none;
+}
+
+/* Styles des boutons de zoom */
+.leaflet-control-zoom {
+  border: none !important;
+  margin-right: 20px !important;
+  margin-bottom: 20px !important;
+  z-index: 500 !important;
+}
+
+/* Force z-index pour tous les contrôles Leaflet */
+.leaflet-control-zoom,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-container * {
+  z-index: 500 !important;
+}
+
+/* Masquer l'attribution Leaflet */
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background-color: white !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(0, 207, 255, 0.1) !important;
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  font-size: 20px !important;
+  border-radius: 9999px !important;
+  transition: all 0.2s !important;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background-color: var(--primary) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 207, 255, 0.1), 0 2px 4px -1px rgba(0, 207, 255, 0.06) !important;
+}
+
+.leaflet-control-zoom-in {
+  margin-bottom: 10px !important;
+}
+
+/* Animation pour la transition avant/après des installations */
+@keyframes slideTransition {
+  0% { 
+    transform: translateX(0); 
+  }
+  45% { 
+    transform: translateX(0); 
+  }
+  50% { 
+    transform: translateX(-50%); 
+  }
+  95% { 
+    transform: translateX(-50%); 
+  }
+  100% { 
+    transform: translateX(0); 
+  }
+}
+
+.installation-hero-slide {
+  animation: slideTransition 10s ease-in-out infinite;
+}
+
+/* Animation pour le défilement des 4 images d'entretien */
+@keyframes carouselSlide {
+  0% { 
+    transform: translateX(0); 
+  }
+  20% { 
+    transform: translateX(0); 
+  }
+  25% { 
+    transform: translateX(-25%); 
+  }
+  45% { 
+    transform: translateX(-25%); 
+  }
+  50% { 
+    transform: translateX(-50%); 
+  }
+  70% { 
+    transform: translateX(-50%); 
+  }
+  75% { 
+    transform: translateX(-75%); 
+  }
+  95% { 
+    transform: translateX(-75%); 
+  }
+  100% { 
+    transform: translateX(0); 
+  }
+}
+
+.entretien-hero-carousel {
+  animation: carouselSlide 16s ease-in-out infinite;
+}

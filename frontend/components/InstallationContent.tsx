@@ -1,0 +1,167 @@
+"use client";
+
+import * as React from "react";
+import Section from "@/components/Section";
+import Heading from "@/components/Heading";
+import Image from "next/image";
+import Button from "@/components/ui/Button";
+import ServicePageLayout, { 
+  AnimatedDescriptionSection, 
+  AnimatedBenefitsSection,
+  AnimatedFeaturesList,
+  AnimatedCTASection,
+  AnimatedProcessSection 
+} from "@/components/ServicePageLayout";
+import { motion } from "framer-motion";
+
+interface InstallationContentProps {
+  features: string[];
+  processSteps: Array<{ title: string; description: string }>;
+}
+
+// Composant Hero personnalisé avec transition avant/après
+function InstallationHeroSection() {
+  return (
+    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+      {/* Container pour les images avec transition infinie */}
+      <div className="absolute inset-0">
+        <div className="w-[200%] h-full flex installation-hero-slide">
+          {/* Image avant */}
+          <div className="w-1/2 h-full relative">
+            <Image
+              src="/services/installation/installation_avant.jpg"
+              alt="Installation avant - Avant les travaux"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            {/* Label pour l'image avant */}
+            <div className="absolute bottom-8 left-8 z-10">
+              <div className="bg-red-500/90 backdrop-blur-sm rounded-lg px-3 py-2 border border-red-400/30">
+                <span className="text-white text-sm font-semibold">AVANT</span>
+              </div>
+            </div>
+          </div>
+          {/* Image après */}
+          <div className="w-1/2 h-full relative">
+            <Image
+              src="/services/installation/installation_apres.jpg"
+              alt="Installation après - Après les travaux"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            {/* Label pour l'image après */}
+            <div className="absolute bottom-8 left-8 z-10">
+              <div className="bg-green-500/90 backdrop-blur-sm rounded-lg px-3 py-2 border border-green-400/30">
+                <span className="text-white text-sm font-semibold">APRÈS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Overlay sombre */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      {/* Badge avant/après animé */}
+      <div className="absolute top-32 right-8 z-20">
+        <motion.div 
+          className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/30"
+          animate={{ 
+            scale: [1, 1.05, 1],
+            opacity: [0.8, 1, 0.8]
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        >
+          <span className="text-white text-sm font-medium">Avant / Après</span>
+        </motion.div>
+      </div>
+      
+      {/* Contenu texte */}
+      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Heading level={1} className="mb-4 text-white">
+                Installation Professionnelle
+              </Heading>
+            </motion.div>
+            <motion.p 
+              className="mb-6 text-lg text-white/90"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Une installation soignée et garantie de votre système de climatisation ou pompe à chaleur par des experts certifiés.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Button href="/contact">Demander un devis</Button>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function InstallationContent({ features, processSteps }: InstallationContentProps) {
+  return (
+    <ServicePageLayout>
+      {/* Hero Section avec transition avant/après */}
+      <InstallationHeroSection />
+
+      {/* Description Section */}
+      <AnimatedDescriptionSection>
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <Heading level={2} className="mb-6">
+              Installation Experte et Garantie
+            </Heading>
+            <p className="mb-4 text-foreground/80">
+              L'installation de votre système de climatisation ou pompe à chaleur est une étape cruciale qui détermine les performances et la durabilité de votre équipement. Nos techniciens certifiés respectent scrupuleusement les normes en vigueur.
+            </p>
+            <p className="mb-8 text-foreground/80">
+              De l'étude préalable à la mise en service, nous vous accompagnons à chaque étape pour garantir une installation parfaite adaptée à vos besoins et contraintes techniques.
+            </p>
+            <AnimatedFeaturesList features={features} />
+          </div>
+          <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
+            <Image
+              src="/services/installation/installation2.png"
+              alt="Technicien installation climatisation"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </AnimatedDescriptionSection>
+
+      {/* Process Section */}
+      <AnimatedProcessSection 
+        title="Notre Processus d'Installation"
+        steps={processSteps}
+      />
+
+      {/* CTA Section */}
+      <AnimatedCTASection 
+        title="Planifiez votre Installation"
+        description="Confiez l'installation de votre système à des professionnels expérimentés pour une tranquillité d'esprit totale."
+      />
+    </ServicePageLayout>
+  );
+}
+
+
