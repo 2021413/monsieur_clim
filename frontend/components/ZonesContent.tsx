@@ -30,16 +30,17 @@ export default function ZonesContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
             src="/zones/hero.jpg"
             alt="Pompe à chaleur Air/Air"
             fill
-            className="object-cover"
+            sizes="100vw"
+            className="object-cover scale-105"
             priority
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <motion.div
@@ -79,15 +80,15 @@ export default function ZonesContent() {
               initial="hidden"
               animate={mapInView ? "visible" : "hidden"}
               variants={animationVariants.stagger as any}
-              className="grid lg:grid-cols-2 gap-12 items-center mb-12"
+              className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8 lg:mb-12"
             >
-              <motion.div variants={animationVariants.slideRight as any}>
+              <motion.div variants={animationVariants.slideRight as any} className="order-2 lg:order-1">
                 <MapWrapper interactive={true} />
               </motion.div>
               
               <motion.div 
                 variants={animationVariants.slideLeft as any}
-                className="space-y-6"
+                className="space-y-6 order-1 lg:order-2"
               >
                 <div>
                   <h3 className="font-display text-xl text-primary mb-3">

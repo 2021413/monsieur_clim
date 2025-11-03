@@ -44,7 +44,7 @@ const realisations = [
   },
   {
     title: "Installation pompe à chaleur piscine couverte",
-    src: "/realisations/r11.jpg",
+    src: "/realisations/installation2.jpg",
   },
   {
     title: "Système multi-split villa méditerranéenne",

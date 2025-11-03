@@ -25,7 +25,7 @@ export default function PacAirEauContent({ features, benefits }: PacAirEauConten
       <AnimatedHeroSection
         title="Pompe à Chaleur Air/Eau"
         description="La solution moderne pour le chauffage et l'eau chaude sanitaire de votre maison, économique et respectueuse de l'environnement."
-        imageSrc="/hero/clim2.jpg"
+        imageSrc="/services/pac_air_eau/hero.jpg"
         imageAlt="Pompe à chaleur Air/Eau"
       />
 
@@ -46,9 +46,10 @@ export default function PacAirEauContent({ features, benefits }: PacAirEauConten
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/hero/clim3.jpg"
+              src="/services/pac_air_eau/air_eau2.jpg"
               alt="Installation PAC Air/Eau"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

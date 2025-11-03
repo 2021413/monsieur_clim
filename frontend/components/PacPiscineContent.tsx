@@ -25,7 +25,7 @@ export default function PacPiscineContent({ features, benefits }: PacPiscineCont
       <AnimatedHeroSection
         title="Pompe à Chaleur Piscine"
         description="Profitez de votre piscine plus longtemps dans l'année avec une solution de chauffage économique et écologique."
-        imageSrc="/hero/clim4.jpg"
+        imageSrc="/services/pac_piscine/hero.jpg"
         imageAlt="Pompe à chaleur Piscine"
       />
 
@@ -46,9 +46,10 @@ export default function PacPiscineContent({ features, benefits }: PacPiscineCont
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/hero/clim1.jpg"
+              src="/services/pac_piscine/piscine2.jpg"
               alt="Installation PAC Piscine"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

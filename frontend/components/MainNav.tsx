@@ -90,7 +90,7 @@ export default function MainNav() {
         {/* CTA Button Desktop */}
         <div className="hidden xl:flex items-center gap-4">
           <Link 
-            href="/services/contact" 
+            href="/contact"
             className="
               group relative inline-flex items-center justify-center 
               rounded-full px-6 py-2.5 text-sm font-semibold 
@@ -172,7 +172,7 @@ export default function MainNav() {
               ))}
               <div className="pt-4 border-t border-white/10 mt-2">
                 <Link 
-                  href="/services/contact" 
+                  href="/contact"
                   className="
                     w-full inline-flex items-center justify-center gap-2
                     rounded-xl px-6 py-3 text-sm font-semibold 

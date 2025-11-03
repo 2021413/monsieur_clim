@@ -32,7 +32,7 @@ export default function Section({
   const baseStyles = clsx(
     // Base styles
     "relative",
-    !noPadding && "py-12 md:py-16",
+    !noPadding && "py-8 sm:py-12 md:py-16",
     
     // Background variants
     muted && "bg-muted/5",

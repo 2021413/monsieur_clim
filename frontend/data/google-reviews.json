@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "lastUpdated": "2025-11-03T16:14:23.067Z",
+    "updateDate": "lundi 3 novembre 2025 à 17:14",
+    "source": "Google Places API",
+    "placeId": "ChIJW-7x3pDTZyURc4hWz3DycuY",
+    "totalAvailableReviews": 5,
+    "apiNote": "L'API Google Places Details ne retourne que les 5 avis les plus pertinents"
+  },
+  "place": {
+    "name": "MONSIEUR CLIM",
+    "rating": 4.9,
+    "userRatingsTotal": 29,
+    "address": "177 Chem. de Portonfus, 83310 Cogolin, France",
+    "photos": [
+      "AWn5SU5qkyJcGvFUoqmhH1sQlqXOpdTqMClwEnQ8ODBN0KurqDxhQizdR-UuR8X5DcfztuIm70P31C_pkb8L51gkIrptQXew2mgEK-4Zvx3MZncC3IOiGIcmkBQUnUxUPGLnFSGtsZgse6x6YCA1k1srCD2sCIzBdZpUl8xD3vvmtoGKpzgAHN52ZO_ipEE7cGLllNd-X2vgks4lpJAEf3gwE-wo45ebJ5PL-hlMxTB0xJmLeg6H0nrkExIhKkwzJL7QLzYv-KVdsEywYAPNrV8U25KQCDYK9BkvrjEGP6i-6bFKpA",
+      "AWn5SU7D8FpmJDQyo-TqnR5-pE7Oi09gcywKVPgWLVqod5PCX31U9IsoKuBYl-VQ8w6thiunK61zzhkdNIH4Gx8pJ7njp67B4yCsaSKr5n7q2YLAb4CnSxvk4uKeLAEVfhLXBmJZLU6o1He8sBnKrI0vIre2MUbIEozippWk3GB0hRpJvrCPdx90RoyWwPN9BNdOjT6O13NvFRagl0PKUxhC57BUuSeFO_tulvlC4dol3LMzlwHEQ0aOFHBA03Wkd0itj_Oz2Vc9WVqkmpan3IL_5m-QxjS-1Lu8B5goNjjC5-mkiw",
+      "AWn5SU55Y3Kg10luAm-opcBdENjYnOy-Y-FDXIX6ntUd2-ezdaSm1emBkQmBv5KoVhH-jwDv-5QMzcDEUg4i3XPZcJRpcFrn105dfVJoK45fvI_IsEkWDqFE2V2XpqfQt3IXTlAAFBXUiSYUpNN8-3ji8mCbgzyobH0nRh78XwVfoHqLW6Jbhg7Thy74kc34M_CSyVzimnci8glGlT3Gg7I9iYuCNqB8CZxHbJw8xdBa905JMy5Pic3rdETFS_cEyZz6f7a6iDUQEOJxIx_jVFxJgxaRFAYNfS6qyxXr9gLlznH9NQ",
+      "AWn5SU4uNnhkrnNU00GhEtm6AQpikxzalxVoXtSgpD_L84ym29ELW3KbJE8pEHSqorMPBgC0sq_ekull1aSSxOwGatbM3wcZh26KytC2Rfe2Za-P_0BoCbFpTkK0XVHwUo2wYWMTw5O9pKy50cRiR7UL0vyMajZWjPscmBHt4ZGOn8n1BFMObsrDwYp18BZW4GfD2psQNXwmQPntP7aPTUYcAT7XGlLV8nh-VuMNgr8AIZeeNVsTtiTWIXi7E3gA4rLCgHKiHqM97h-lc4uXTSryD_w0tCBQ0ImkKkFC4e2CaQ7emg",
+      "AWn5SU4BC3fdq65LTml1QRB8xd2GduEzqnlo0iM1mp1f7NRI-J6DwrcElNyRBqXHsxLRzsY0ReqkvM7ougYLFhZoLz6QUE3eO0pKIVr-yn8eUbemhDZtVqLLCgRQ68vcGcp69oOIVWg6pZcdQEFBJRrPo960t7mblAE2BF6IMZhhBciihJ_iY5N9p1zZN7udelHfnUEObqxWvGv-CztGMT6ktRmQ0DGl52UMCIl3PGeNRd7f7wSQXYOWkBT75mkFhBFMwWBsdOB3GNeiYa8tzRvgdZy_CKCrSNMxFfg7IQsvS2UDjA"
+    ]
+  },
+  "reviews": [
+    {
+      "authorName": "olivier Etchart",
+      "authorUrl": "https://www.google.com/maps/contrib/114303191309000282629/reviews",
+      "language": "fr",
+      "originalLanguage": "fr",
+      "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKELN5TZxWIBecvf954Io0-3NyVCr4HHN2N_0HjS6MU9gxC4g=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relativeTimeDescription": "il y a un mois",
+      "text": "Très professionnel travail vite et très bien\nUn super contact des jeunes très sérieux et très sympathique je vous les recommande vivement",
+      "time": 1759396165,
+      "timestamp": "2025-10-02T09:09:25.000Z",
+      "formattedDate": "2 octobre 2025",
+      "translated": false
+    },
+    {
+      "authorName": "Maurice boscorelli",
+      "authorUrl": "https://www.google.com/maps/contrib/106024521905359990462/reviews",
+      "language": "fr",
+      "originalLanguage": "fr",
+      "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjXixzb0GpEeDTWFGlRQNuSEJCoMcLS6LVJx3OxQQP0-XM1iGnl-=s128-c0x00000000-cc-rp-mo-ba2",
+      "rating": 5,
+      "relativeTimeDescription": "il y a 3 mois",
+      "text": "Depuis 3 ans , j'ai des sociétés qui défilent pour l'entretien de ma climatisation du grand n'importe quoi... Je viens de tomber (par une connaissance) Cette société basée à Cogolin, un vrai professionnel, méticuleux,  contentieux et en plus très sympathique, avec un prix correct.\nJe le recommande fortement!",
+      "time": 1753258450,
+      "timestamp": "2025-07-23T08:14:10.000Z",
+      "formattedDate": "23 juillet 2025",
+      "translated": false
+    },
+    {
+      "authorName": "Fabian DEMOULIN",
+      "authorUrl": "https://www.google.com/maps/contrib/101144048109345614465/reviews",
+      "language": "fr",
+      "originalLanguage": "fr",
+      "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocJJZcDv8aWfigR2txBur22uI9zVq_YVNEHUHqVkS57D1RQJpw=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relativeTimeDescription": "il y a 3 mois",
+      "text": "Super professionnel depuis la remise du devis jusqu’à l’installation. Délais respectés, propreté du chantier et qualité irréprochable. Je recommande vivement et cerise sur le gateau Nicolas est un gars ultra sympa !",
+      "time": 1753215771,
+      "timestamp": "2025-07-22T20:22:51.000Z",
+      "formattedDate": "22 juillet 2025",
+      "translated": false
+    },
+    {
+      "authorName": "Philippe Guestereguy",
+      "authorUrl": "https://www.google.com/maps/contrib/117030215488116243157/reviews",
+      "language": "fr",
+      "originalLanguage": "fr",
+      "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKncTGwIoyVpmBime3NZ9XR3bjTzheVBpZ1LAEF78ej04fCMg=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relativeTimeDescription": "il y a 5 mois",
+      "text": "Super travail de Monsieur Clim, professionalisme, propreté et sympathie sont les maîtres mots pour décrire cette entreprise. Pour parfaire l'avis, le devis est respecté malgré les difficultés rencontrées . L'installation des équipements clim sont discrets et se confondent avec l'environnement de l'appartement . Bref à recommander",
+      "time": 1748861143,
+      "timestamp": "2025-06-02T10:45:43.000Z",
+      "formattedDate": "2 juin 2025",
+      "translated": false
+    },
+    {
+      "authorName": "Marie MB",
+      "authorUrl": "https://www.google.com/maps/contrib/106768860477747067255/reviews",
+      "language": "fr",
+      "originalLanguage": "fr",
+      "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocJKO3Ilt261X2H2yUxlVHp0lwHYdQZOI9D9CuhhkpMga2V3Dg=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relativeTimeDescription": "il y a 5 mois",
+      "text": "Réactif, professionnel, efficace et très sympathique  ! Merci beaucoup M. Clim pour votre intervention, nos clims n'ont jamais été aussi propres ! Une entreprise sérieuse à recommander 👍",
+      "time": 1747646005,
+      "timestamp": "2025-05-19T09:13:25.000Z",
+      "formattedDate": "19 mai 2025",
+      "translated": false
+    }
+  ]
+}

@@ -41,16 +41,17 @@ export default function AboutContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
             src="/about/about_hero.jpg"
             alt="À propos de Monsieur Clim - Expert climatisation Golfe de Saint-Tropez"
             fill
-            className="object-cover scale-100"
+            sizes="100vw"
+            className="object-cover scale-105"
             priority
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 -mt-16" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <motion.div
@@ -91,13 +92,16 @@ export default function AboutContent() {
                   Notre expertise s'étend de l'installation de vos systèmes de climatisation à leur maintenance, en passant par le dépannage et le conseil personnalisé.
                 </p>
               </div>
-              <div className="relative h-[400px] w-[120%] rounded-xl overflow-hidden bg-gray-100">
-                <Image
-                  src="/about/mr_clim.jpg"
-                  alt="Nicolas Lounes - Monsieur Clim, expert climatisation Golfe de Saint-Tropez"
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative w-full rounded-xl overflow-hidden bg-gray-100">
+                <div className="aspect-[16/9]">
+                  <Image
+                    src="/about/mr_clim.jpg"
+                    alt="Nicolas Lounes - Monsieur Clim, expert climatisation Golfe de Saint-Tropez"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
           </AnimatedSection>
@@ -156,6 +160,7 @@ export default function AboutContent() {
                   src="/about/about_engagement.jpg"
                   alt="Service de climatisation dans le Golfe de Saint-Tropez"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover rounded-lg"
                 />
               </div>

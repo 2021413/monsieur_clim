@@ -2,7 +2,6 @@
 
 import React from "react";
 import { MapContainer, TileLayer, Polygon, useMap } from "react-leaflet";
-import * as turf from "@turf/turf";
 import "leaflet/dist/leaflet.css";
 
 interface MapProps {

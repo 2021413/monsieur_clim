@@ -15,11 +15,11 @@ export default function LogoCloud() {
     { src: "/brands/heiwa.png", alt: "Heiwa" },
   ];
   return (
-    <Section muted className="py-16">
-      <div className="mb-12 text-center">
-        <h2 className="font-display text-2xl font-bold mb-4">Nos Partenaires de Confiance</h2>
-        <p className="text-lg mb-2">Leaders mondiaux de la climatisation et du confort thermique</p>
-        <p className="text-foreground/70">
+    <Section muted className="py-10 sm:py-16">
+      <div className="mb-8 sm:mb-12 text-center px-4">
+        <h2 className="font-display text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Nos Partenaires de Confiance</h2>
+        <p className="text-base sm:text-lg mb-2">Leaders mondiaux de la climatisation et du confort thermique</p>
+        <p className="text-sm sm:text-base text-foreground/70">
           Installation, maintenance et SAV officiel — <strong>Mitsubishi Electric</strong>, <strong>Daikin</strong>, et <strong>Heiwa</strong>
         </p>
       </div>
@@ -28,7 +28,7 @@ export default function LogoCloud() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={animationVariants.stagger as any}
-        className="grid grid-cols-1 sm:grid-cols-3 items-center justify-items-center gap-16 lg:gap-24 opacity-90 max-w-7xl mx-auto px-8 mb-12"
+        className="grid grid-cols-1 sm:grid-cols-3 items-center justify-items-center gap-10 sm:gap-16 lg:gap-24 opacity-90 max-w-7xl mx-auto px-4 sm:px-8 mb-8 sm:mb-12"
       >
         {brands.map((b, index) => (
           <motion.div 

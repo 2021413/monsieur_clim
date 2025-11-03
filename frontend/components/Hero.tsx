@@ -51,7 +51,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[600px] sm:min-h-[700px]" style={{height: 'calc(100vh + 128px)'}}>
       {/* Images de fond avec transition */}
       {HERO_IMAGES.map((image, index) => (
         <div
@@ -64,16 +64,17 @@ export default function Hero() {
             src={image.src} 
             alt={image.alt} 
             fill
-            className="animate-ken-burns object-cover scale-125"
+            sizes="100vw"
+            className="animate-ken-burns object-cover scale-110 sm:scale-125"
             priority={index === 0}
           />
         </div>
       ))}
       {/* Overlay pour améliorer la lisibilité */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/50" />
       
       {/* Contenu */}
-      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[600px] sm:min-h-[700px]" style={{height: 'calc(100vh + 128px)'}}>
         <div className="w-full max-w-7xl mx-auto">
           <div className="max-w-2xl">
             <motion.div

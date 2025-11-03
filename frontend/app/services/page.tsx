@@ -26,19 +26,19 @@ export default function Page() {
       title: "PAC Air/Air",
       description: "Solution idéale pour la climatisation et le chauffage",
       href: "/services/pac-air-air",
-      image: "/hero/clim3.jpg"
+      image: "/services/pac_air_air/air_air1.jpg"
     },
     {
       title: "PAC Air/Eau",
       description: "Chauffage et eau chaude sanitaire écologique",
       href: "/services/pac-air-eau",
-      image: "/hero/clim2.jpg"
+      image: "/services/pac_air_eau/air_eau1.jpg"
     },
     {
       title: "PAC Piscine",
       description: "Profitez de votre piscine toute l'année",
       href: "/services/pac-piscine",
-      image: "/hero/clim1.jpg"
+      image: "/services/pac_piscine/piscine1.jpg"
     },
     {
       title: "Installation",

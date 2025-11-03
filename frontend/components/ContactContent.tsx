@@ -16,16 +16,17 @@ export default function ContactContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src="/services/contact/hero.jpg"
+            src="/contact/hero.jpg"
             alt="Contactez Monsieur Clim - Expert climatisation Golfe de Saint-Tropez"
             fill
-            className="object-cover scale-125"
+            sizes="100vw"
+            className="object-cover scale-105 sm:scale-110"
             priority
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <motion.div
@@ -91,13 +92,13 @@ export default function ContactContent() {
             initial="hidden"
             animate={formInView ? "visible" : "hidden"}
             variants={animationVariants.stagger as any}
-            className="grid gap-16 lg:grid-cols-3"
+            className="grid gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-3"
           >
             
             {/* Formulaire (2 colonnes sur desktop) */}
             <motion.div 
               variants={animationVariants.slideLeft as any}
-              className="lg:col-span-2"
+              className="lg:col-span-2 order-2 lg:order-1"
             >
               <ContactForm />
             </motion.div>
@@ -105,7 +106,7 @@ export default function ContactContent() {
             {/* Informations de contact (1 colonne) */}
             <motion.div 
               variants={animationVariants.slideRight as any}
-              className="relative"
+              className="relative order-1 lg:order-2"
             >
               {/* Carte d'informations principale */}
               <div className="rounded-3xl bg-gradient-to-br from-primary/10 via-background/80 to-accent/5 backdrop-blur-xl border border-primary/20 p-8 shadow-2xl">
@@ -118,7 +119,7 @@ export default function ContactContent() {
                   <h3 className="font-display text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     Contactez-nous
                   </h3>
-                  <p className="text-muted">Réponse garantie sous 2h</p>
+                  <p className="text-muted">Réponse garantie</p>
                 </div>
 
                 <div className="space-y-6">
@@ -131,7 +132,7 @@ export default function ContactContent() {
                     <div>
                       <h4 className="font-display font-semibold text-foreground">Réponse rapide</h4>
                       <p className="text-sm text-muted leading-relaxed">
-                        Sous 2h en semaine
+                        en semaine
                       </p>
                     </div>
                   </div>

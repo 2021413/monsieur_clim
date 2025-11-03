@@ -51,6 +51,7 @@ export default function DepannageContent({ features, processSteps }: DepannageCo
               src="/services/depannage/depannage2.jpg"
               alt="image de dépannage"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

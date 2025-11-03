@@ -41,7 +41,7 @@ function EntretienHeroSection() {
   ];
 
   return (
-    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
       {/* Container pour les images avec défilement */}
       <div className="absolute inset-0">
         <div className="w-[400%] h-full flex entretien-hero-carousel">
@@ -51,6 +51,7 @@ function EntretienHeroSection() {
                 src={image.src}
                 alt={image.alt}
                 fill
+                sizes="100vw"
                 className="object-cover object-center"
                 priority={index === 0}
               />
@@ -60,10 +61,10 @@ function EntretienHeroSection() {
       </div>
       
       {/* Overlay sombre */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
       
       {/* Contenu texte */}
-      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <div className="w-full max-w-7xl mx-auto">
           <div className="max-w-2xl">
             <motion.div
@@ -120,9 +121,10 @@ export default function EntretienContent({ features, maintenanceSteps }: Entreti
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/services/entretien2.png"
+              src="/services/entretien/entretien2.png"
               alt="entretien avant/après"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

@@ -23,16 +23,17 @@ export default function RealisationsContent({ realisations }: RealisationsConten
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
             src="/realisations/hero.jpg"
             alt="Réalisations Monsieur Clim - Installations climatisation et pompes à chaleur"
             fill
-            className="object-cover scale-125"
+            sizes="100vw"
+            className="object-cover scale-105 sm:scale-110"
             priority
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <motion.div

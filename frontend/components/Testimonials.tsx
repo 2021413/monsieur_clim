@@ -3,85 +3,42 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { googlePlacesService, FormattedReview, GooglePlaceDetails } from '@/lib/google-places';
 import Heading from '@/components/Heading';
 import AnimatedSection from '@/components/AnimatedSection';
+import googleReviewsData from '@/data/google-reviews.json';
 
-// Avis de fallback au cas où l'API Google ne fonctionne pas
-const fallbackTestimonials: FormattedReview[] = [
-  {
-    name: "Marie Dubois",
-    rating: 5,
-    text: "Service excellent ! Installation rapide et propre de notre climatisation. L'équipe est très professionnelle.",
-    date: "Il y a 2 semaines",
-    language: "fr"
-  },
-  {
-    name: "Jean Martineau",
-    rating: 5,
-    text: "Dépannage en urgence un dimanche, ils sont venus rapidement. Prix honnête et travail de qualité.",
-    date: "Il y a 1 mois",
-    language: "fr"
-  },
-  {
-    name: "Sophie Laurent",
-    rating: 5,
-    text: "Très satisfaite de l'entretien de ma pompe à chaleur. Conseils utiles et service irréprochable.",
-    date: "Il y a 3 semaines",
-    language: "fr"
-  },
-  {
-    name: "Pierre Rousseau",
-    rating: 5,
-    text: "Installation PAC air-eau parfaite ! Devis clair, délais respectés. Je recommande vivement.",
-    date: "Il y a 1 mois",
-    language: "fr"
-  },
-  {
-    name: "Catherine Martin",
-    rating: 5,
-    text: "Entretien annuel très professionnel. L'équipe explique bien ce qu'elle fait et donne de bons conseils.",
-    date: "Il y a 2 mois",
-    language: "fr"
-  },
-  {
-    name: "Michel Dupont",
-    rating: 5,
-    text: "Réparation climatisation en pleine canicule. Intervention le jour même, technicien compétent.",
-    date: "Il y a 1 semaine",
-    language: "fr"
-  }
-];
+// Interface pour les avis
+interface Review {
+  authorName: string;
+  rating: number;
+  text: string;
+  relativeTimeDescription: string;
+  formattedDate: string;
+  profilePhotoUrl?: string;
+}
+
+// Formatter les avis du JSON pour l'affichage
+const formatReviewsForDisplay = (reviews: typeof googleReviewsData.reviews) => {
+  return reviews.map(review => ({
+    name: review.authorName,
+    rating: review.rating,
+    text: review.text,
+    date: review.relativeTimeDescription,
+    profilePhoto: review.profilePhotoUrl,
+    language: review.language
+  }));
+};
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = React.useState<FormattedReview[]>(fallbackTestimonials);
-  const [placeDetails, setPlaceDetails] = React.useState<GooglePlaceDetails | null>(null);
+  const testimonials = formatReviewsForDisplay(googleReviewsData.reviews);
+  const placeDetails = {
+    rating: googleReviewsData.place.rating,
+    user_ratings_total: googleReviewsData.place.userRatingsTotal,
+    name: googleReviewsData.place.name
+  };
+  
   const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
-  const [loading, setLoading] = React.useState(true);
   const { ref: sectionRef, isInView: sectionInView } = useScrollAnimation({ amount: 0.2 });
-
-  // Charger les avis Google au montage du composant
-  React.useEffect(() => {
-    const loadGoogleReviews = async () => {
-      try {
-        setLoading(true);
-        const details = await googlePlacesService.getPlaceDetails();
-        
-        if (details && details.reviews && details.reviews.length > 0) {
-          setPlaceDetails(details);
-          const formattedReviews = googlePlacesService.formatReviewsForDisplay(details.reviews);
-          setTestimonials(formattedReviews);
-        }
-      } catch (error) {
-        console.error('Erreur lors du chargement des avis Google:', error);
-        // Utiliser les avis de fallback en cas d'erreur
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadGoogleReviews();
-  }, []);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -109,17 +66,11 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-yellow-400 text-2xl">★★★★★</span>
             <span className="text-foreground/70 text-lg font-medium">
-              {placeDetails 
-                ? `${placeDetails.rating}/5 sur Google (${placeDetails.user_ratings_total} avis)`
-                : "5.0 sur Google"
-              }
+              {placeDetails.rating}/5 sur Google ({placeDetails.user_ratings_total} avis)
             </span>
           </div>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            {loading 
-              ? "Chargement des avis Google..."
-              : "Découvrez les retours de nos clients satisfaits dans le Golfe de Saint-Tropez"
-            }
+            Découvrez les retours de nos clients satisfaits dans le Golfe de Saint-Tropez
           </p>
         </div>
       </AnimatedSection>
@@ -157,7 +108,7 @@ export default function Testimonials() {
                     
                     <div>
                       <div className="font-medium text-primary text-lg">{testimonial.name}</div>
-                      <div className="text-sm text-foreground/50">{testimonial.location} • {testimonial.date}</div>
+                      <div className="text-sm text-foreground/50">{testimonial.date}</div>
                     </div>
                   </div>
                 </div>
@@ -222,7 +173,7 @@ export default function Testimonials() {
           <AnimatedSection animation="slideUp" delay={0.6}>
             <div className="text-center pt-4">
               <a 
-                href="https://www.google.com/search?q=monsieur+clim+saint+tropez" 
+                href="https://share.google/QeN1rZMnxvairuSF6" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"

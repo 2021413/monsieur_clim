@@ -8,11 +8,7 @@
     "dev": "nodemon server.js",
     "test": "node test-api.js",
     "setup": "node scripts/setup.js",
-    "check": "node scripts/check-deps.js",
-    "check-syntax": "for file in config/*.js controllers/*.js services/*.js routes/*.js middlewares/*.js utils/*.js; do node -c \"$file\" && echo \"✅ $file\"; done",
-    "lint": "echo \"Linting would go here - consider adding ESLint\"",
-    "clean": "rm -rf node_modules package-lock.json && npm install",
-    "info": "echo \"MonsieurClim Backend v1.0.0\" && node -v && npm -v"
+    "check": "node scripts/check-deps.js"
   },
   "keywords": ["express", "nodemailer", "google-api", "climatisation"],
   "author": "MonsieurClim",

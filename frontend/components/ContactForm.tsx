@@ -61,13 +61,10 @@ export default function ContactForm({ title, description }: Props) {
         throw new Error(`Erreur HTTP: ${response.status}`);
       }
 
-      const result = await response.json();
-      console.log('Formulaire envoyé avec succès:', result);
-      
+      await response.json();
       setState("success");
       (e.target as HTMLFormElement).reset();
     } catch (error) {
-      console.error('Erreur lors de l\'envoi du formulaire:', error);
       setState("error");
     }
   }
@@ -75,7 +72,7 @@ export default function ContactForm({ title, description }: Props) {
   return (
     <div className="relative">
       {/* Carte principale du formulaire avec dégradés */}
-      <div className="relative rounded-3xl bg-gradient-to-br from-[#1a2135] to-[#161c2e] p-8 shadow-2xl overflow-hidden">
+      <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#1a2135] to-[#161c2e] p-4 sm:p-6 md:p-8 shadow-2xl overflow-hidden">
         
         {/* Éléments décoratifs internes */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-2xl -z-10" />
@@ -83,14 +80,14 @@ export default function ContactForm({ title, description }: Props) {
         
         {/* En-tête du formulaire */}
         {(title || description) && (
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl mx-auto mb-4 flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-secondary rounded-xl sm:rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
             </div>
             {title && (
-              <h3 className="font-display text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h3 className="font-display text-xl sm:text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 {title}
               </h3>
             )}
@@ -102,10 +99,10 @@ export default function ContactForm({ title, description }: Props) {
           </div>
         )}
 
-        <form onSubmit={onSubmit} className="space-y-8">
+        <form onSubmit={onSubmit} className="space-y-6 sm:space-y-8">
           {/* Informations personnelles */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3 mb-4">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
                 <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -209,12 +206,12 @@ export default function ContactForm({ title, description }: Props) {
           </div>
 
           {/* Bouton d'envoi avec états */}
-          <div className="pt-6">
-            <div className="flex flex-col sm:flex-row items-center gap-4">
+          <div className="pt-4 sm:pt-6">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
               <Button 
                 type="submit" 
                 disabled={state === "loading"} 
-                className="w-full sm:w-auto bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl py-4 px-8 text-lg font-semibold"
+                className="w-full sm:w-auto bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl py-3 sm:py-4 px-6 sm:px-8 text-base sm:text-lg font-semibold"
               >
                 {state === "loading" && (
                   <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

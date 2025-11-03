@@ -21,69 +21,52 @@ interface InstallationContentProps {
 
 // Composant Hero personnalisé avec transition avant/après
 function InstallationHeroSection() {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
-    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
       {/* Container pour les images avec transition infinie */}
       <div className="absolute inset-0">
         <div className="w-[200%] h-full flex installation-hero-slide">
           {/* Image avant */}
           <div className="w-1/2 h-full relative">
             <Image
-              src="/services/installation/installation_avant.jpg"
+              src={isMobile ? "/services/installation/installation_avant_mobile.jpg" : "/services/installation/installation_avant.jpg"}
               alt="Installation avant - Avant les travaux"
               fill
+              sizes="100vw"
               className="object-cover object-center"
               priority
             />
-            {/* Label pour l'image avant */}
-            <div className="absolute bottom-8 left-8 z-10">
-              <div className="bg-red-500/90 backdrop-blur-sm rounded-lg px-3 py-2 border border-red-400/30">
-                <span className="text-white text-sm font-semibold">AVANT</span>
-              </div>
-            </div>
           </div>
           {/* Image après */}
           <div className="w-1/2 h-full relative">
             <Image
-              src="/services/installation/installation_apres.jpg"
+              src={isMobile ? "/services/installation/installation_apres_mobile.jpg" : "/services/installation/installation_apres.jpg"}
               alt="Installation après - Après les travaux"
               fill
+              sizes="100vw"
               className="object-cover object-center"
               priority
             />
-            {/* Label pour l'image après */}
-            <div className="absolute bottom-8 left-8 z-10">
-              <div className="bg-green-500/90 backdrop-blur-sm rounded-lg px-3 py-2 border border-green-400/30">
-                <span className="text-white text-sm font-semibold">APRÈS</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
       
       {/* Overlay sombre */}
-      <div className="absolute inset-0 bg-black/40"></div>
-      
-      {/* Badge avant/après animé */}
-      <div className="absolute top-32 right-8 z-20">
-        <motion.div 
-          className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/30"
-          animate={{ 
-            scale: [1, 1.05, 1],
-            opacity: [0.8, 1, 0.8]
-          }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-        >
-          <span className="text-white text-sm font-medium">Avant / Après</span>
-        </motion.div>
-      </div>
+      <div className="absolute inset-0 bg-black/50"></div>
       
       {/* Contenu texte */}
-      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <div className="w-full max-w-7xl mx-auto">
           <div className="max-w-2xl">
             <motion.div
@@ -140,9 +123,10 @@ export default function InstallationContent({ features, processSteps }: Installa
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/services/installation/installation2.png"
+              src="/services/installation/installation2.jpg"
               alt="Technicien installation climatisation"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

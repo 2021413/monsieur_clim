@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import MainNav from "@/components/MainNav";
 import Footer from "@/components/Footer";
+import CookieProvider from "@/components/CookieProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://monsieurclim.fr"),
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0ea5e9",
+  themeColor: "#161c2e",
 };
 
 export default function RootLayout({
@@ -78,9 +79,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="antialiased">
-        <MainNav />
-        {children}
-        <Footer />
+        <CookieProvider>
+          <MainNav />
+          {children}
+          <Footer />
+        </CookieProvider>
       </body>
     </html>
   );

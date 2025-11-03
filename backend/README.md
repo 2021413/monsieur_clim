@@ -1,257 +1,225 @@
 # MonsieurClim Backend
 
-Backend Express pour le site MonsieurClim - Gestion des formulaires de contact et récupération des avis Google.
+API REST pour la gestion des formulaires de contact et des avis Google pour le site MonsieurClim.
 
-## 🚀 Fonctionnalités
+## 🚀 Installation rapide
 
-- **Formulaire de contact** : Réception et traitement des demandes clients
-- **Emails automatiques** : Notification admin + confirmation client via Gmail
-- **Avis Google** : Récupération des avis Google My Business via API
-- **Validation robuste** : Validation et sanitisation des données
-- **Sécurité** : Rate limiting, CORS, Helmet, protection anti-spam
-- **Cache intelligent** : Mise en cache des avis pour optimiser les performances
+```bash
+# 1. Installer les dépendances
+npm install
+
+# 2. Configurer l'environnement (mode interactif)
+npm run setup
+
+# 3. Démarrer le serveur
+npm run dev
+```
+
+Le serveur démarre sur **http://localhost:3001**
 
 ## 📋 Prérequis
 
-- Node.js >= 16.0.0
-- Compte Gmail avec mot de passe d'application
-- API Google Places (optionnel pour les avis)
+- **Node.js** 16.0.0 ou supérieur
+- **Compte Gmail** avec authentification à 2 facteurs (pour l'envoi d'emails)
+- **Clé API Google Places** (optionnel - pour les avis)
 
-## 🛠️ Installation
+## ⚙️ Configuration
 
-1. **Cloner et installer les dépendances :**
+### Configuration automatique (recommandé)
+
 ```bash
-cd backend
-npm install
+npm run setup
 ```
 
-2. **Configuration des variables d'environnement :**
+Ce script interactif vous guide pour configurer toutes les variables d'environnement.
+
+### Configuration manuelle
+
+1. Copier le fichier d'exemple :
 ```bash
-# Copier le fichier d'exemple
 cp .env.example .env
-
-# Éditer le fichier .env avec vos configurations
-nano .env
 ```
 
-3. **Configuration Gmail (compte classique recommandé) :**
-   - Créer ou utiliser un Gmail dédié (ex: contact.monsieurclim@gmail.com)
-   - Activer l'authentification à 2 facteurs sur ce compte Gmail
-   - Générer un mot de passe d'application : [Guide Google](https://support.google.com/accounts/answer/185833)
-   - Utiliser le même Gmail pour l'envoi ET la réception des emails
-   - Guide détaillé : [GMAIL_SETUP.md](./GMAIL_SETUP.md)
+2. Éditer `.env` et renseigner les valeurs :
 
-4. **Configuration Google API (optionnel) :**
-   - Créer un projet sur [Google Cloud Console](https://console.cloud.google.com)
-   - Activer l'API Google Places
-   - Créer une clé API et l'ajouter dans `.env`
-   - Récupérer votre Place ID via [Place ID Finder](https://developers.google.com/maps/documentation/places/web-service/place-id)
+#### Variables obligatoires
 
-## 🔧 Configuration
+| Variable | Description | Exemple |
+|----------|-------------|---------|
+| `GMAIL_USER` | Adresse Gmail pour l'envoi | `monsieurclim83@gmail.com` |
+| `GMAIL_PASSWORD` | Mot de passe d'application Gmail | `abcd efgh ijkl mnop` |
+| `ADMIN_EMAIL` | Email de réception des formulaires | `monsieurclim83@gmail.com` |
 
-### 📧 Options de configuration email
+#### Variables optionnelles
 
-#### Option 1 : Gmail classique (recommandé pour les indépendants)
-```bash
-# Simple : même Gmail pour tout
-GMAIL_USER=contact.monsieurclim@gmail.com
-ADMIN_EMAIL=contact.monsieurclim@gmail.com
-```
-✅ **Avantages** : Simple, gratuit, centralisation
+| Variable | Description | Par défaut |
+|----------|-------------|------------|
+| `PORT` | Port du serveur | `3001` |
+| `FRONTEND_URL` | URL du frontend (CORS) | `http://localhost:3000` |
+| `GOOGLE_API_KEY` | Clé API Google Places | - |
+| `GOOGLE_PLACE_ID` | ID du lieu Google | - |
 
-#### Option 2 : Gmail + email professionnel  
-```bash
-# Gmail pour l'envoi, email pro pour la réception
-GMAIL_USER=backend@gmail.com
-ADMIN_EMAIL=contact@monsieurclim.fr
-```
-✅ **Avantages** : Image professionnelle
+### Configuration Gmail
 
-#### Option 3 : Gmail Workspace
-```bash
-# Gmail professionnel pour tout
-GMAIL_USER=contact@monsieurclim.fr
-ADMIN_EMAIL=contact@monsieurclim.fr
-```
-✅ **Avantages** : Domaine personnalisé
+Pour obtenir un mot de passe d'application Gmail :
 
-📖 **Guide détaillé Gmail** : [GMAIL_SETUP.md](./GMAIL_SETUP.md)
+1. Aller sur [myaccount.google.com](https://myaccount.google.com)
+2. **Sécurité** → Activer l'**authentification à 2 facteurs**
+3. **Mots de passe d'application** → Créer un nouveau mot de passe
+4. Choisir **Autre (nom personnalisé)** → "MonsieurClim Backend"
+5. Copier le mot de passe généré (16 caractères) dans `GMAIL_PASSWORD`
 
-### Variables d'environnement (.env)
-
-```bash
-# Configuration serveur
-PORT=3001
-NODE_ENV=development
-
-# Configuration Gmail SMTP (Gmail classique recommandé)
-# Utilisez le même Gmail pour l'envoi ET la réception
-GMAIL_USER=contact.monsieurclim@gmail.com
-GMAIL_PASSWORD=votre_mot_de_passe_application
-
-# Email de réception des formulaires (même que GMAIL_USER pour simplicité)
-ADMIN_EMAIL=contact.monsieurclim@gmail.com
-
-# Configuration Google My Business API (optionnel)
-GOOGLE_API_KEY=votre_google_api_key
-GOOGLE_PLACE_ID=votre_place_id
-
-# URLs autorisées (CORS)
-FRONTEND_URL=http://localhost:3000
-
-# Configuration emails (informations affichées dans les emails)
-COMPANY_NAME=MonsieurClim
-COMPANY_PHONE=01 23 45 67 89
-COMPANY_EMAIL=contact.monsieurclim@gmail.com
-```
-
-## 🚀 Démarrage
-
-```bash
-# Développement avec rechargement automatique
-npm run dev
-
-# Production
-npm start
-```
-
-Le serveur démarre sur http://localhost:3001
+💡 **Astuce** : Utilisez le même Gmail pour `GMAIL_USER` et `ADMIN_EMAIL` (plus simple).
 
 ## 📡 API Endpoints
 
+### Santé du serveur
+```
+GET /health
+```
+Vérifie que le serveur fonctionne.
+
 ### Formulaires
 
-| Endpoint | Méthode | Description |
-|----------|---------|-------------|
-| `/api/form/submit` | POST | Soumission du formulaire de contact |
-| `/api/form/types` | GET | Types de demandes disponibles |
-| `/api/form/test` | GET | Test du service de formulaire |
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `POST` | `/api/form/submit` | Soumet un formulaire de contact |
+| `GET` | `/api/form/types` | Liste les types de demandes |
+| `GET` | `/api/form/test` | Test de la config email |
+
+#### Exemple de soumission
+```bash
+curl -X POST http://localhost:3001/api/form/submit \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nom": "Jean Dupont",
+    "email": "jean@example.com",
+    "telephone": "06 12 34 56 78",
+    "typedemande": "Installation climatisation",
+    "message": "Je souhaite un devis pour une climatisation",
+    "ville": "Toulon",
+    "codepostal": "83000"
+  }'
+```
 
 ### Avis Google
 
-| Endpoint | Méthode | Description |
-|----------|---------|-------------|
-| `/api/reviews` | GET | Récupération des avis Google |
-| `/api/reviews/stats` | GET | Statistiques des avis |
-| `/api/reviews/test` | GET | Test de la configuration Google |
-| `/api/reviews/refresh` | POST | Rafraîchissement forcé des avis |
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `GET` | `/api/reviews` | Récupère les avis Google |
+| `GET` | `/api/reviews/stats` | Statistiques des avis |
+| `GET` | `/api/reviews/test` | Test de la config Google API |
+| `POST` | `/api/reviews/refresh` | Force le rafraîchissement |
 
-### Utilitaires
+## 🧪 Tests
 
-| Endpoint | Méthode | Description |
-|----------|---------|-------------|
-| `/health` | GET | Statut de santé du serveur |
-
-## 📨 Exemple de formulaire
-
-```javascript
-const formData = {
-  nom: "Jean Dupont",
-  email: "jean.dupont@email.com",
-  telephone: "01 23 45 67 89",
-  typedemande: "Installation climatisation",
-  message: "Je souhaite obtenir un devis pour l'installation d'une climatisation.",
-  ville: "Paris",
-  codepostal: "75001"
-};
-
-fetch('/api/form/submit', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(formData)
-});
+### Vérifier la configuration
+```bash
+npm run check
 ```
+Vérifie que tout est correctement configuré (fichiers, dépendances, connexions).
 
-## 🏗️ Architecture
+### Tester l'API
+```bash
+npm run test
+```
+Lance une suite de tests sur tous les endpoints de l'API.
+
+**Note** : Le serveur doit être démarré avant de lancer les tests.
+
+## 🛠️ Commandes
+
+| Commande | Description |
+|----------|-------------|
+| `npm start` | Démarre le serveur en production |
+| `npm run dev` | Démarre avec rechargement auto (nodemon) |
+| `npm run setup` | Configuration interactive |
+| `npm run check` | Vérifie la configuration |
+| `npm run test` | Teste l'API |
+
+## 📁 Structure du projet
 
 ```
 backend/
-├── config/           # Configuration (mailer, Google API)
-├── controllers/      # Logique métier (formulaires, avis)
-├── services/         # Services (emails, API Google)
-├── routes/          # Routes Express
-├── middlewares/     # Middlewares (erreurs, validation)
-├── utils/           # Utilitaires (validation, sanitisation)
-├── server.js        # Point d'entrée
-└── package.json     # Dépendances
+├── config/           # Configuration (Gmail, Google API)
+├── controllers/      # Logique métier des routes
+├── middlewares/      # Middlewares Express (erreurs, etc.)
+├── routes/          # Définition des routes API
+├── services/        # Services (emails, avis Google)
+├── utils/           # Utilitaires (validation, etc.)
+├── scripts/         # Scripts de configuration et vérification
+├── server.js        # Point d'entrée de l'application
+├── test-api.js      # Script de test de l'API
+├── package.json     # Dépendances et scripts
+└── .env             # Variables d'environnement (à créer)
 ```
 
 ## 🔒 Sécurité
 
-- **Rate limiting** : Protection contre le spam et les attaques
-- **CORS** : Configuration des origines autorisées
-- **Helmet** : Headers de sécurité HTTP
-- **Validation** : Validation stricte des données entrantes
-- **Sanitisation** : Nettoyage des données utilisateur
-- **Protection anti-spam** : Honeypot et détection de mots-clés
+L'API intègre plusieurs protections :
 
-## 📧 Templates d'emails
+- **Helmet.js** : Protection des headers HTTP
+- **Rate limiting** : Limite les requêtes (100/15min général, 5/15min pour les formulaires)
+- **CORS** : Autorise uniquement le frontend configuré
+- **Validation** : Validation stricte des données d'entrée
+- **Sanitization** : Nettoyage des données utilisateur
 
-Le service génère automatiquement deux types d'emails :
+## 🐛 Dépannage
 
-1. **Email admin** : Notification de nouveau formulaire avec toutes les données
-2. **Email client** : Confirmation de réception avec informations de contact
-
-Les templates sont responsifs et incluent le branding MonsieurClim.
-
-## 🔍 Logs et débogage
-
-Les logs incluent :
-- Requêtes HTTP avec ID unique
-- Erreurs détaillées en mode développement
-- Statut des envois d'emails
-- Performance des requêtes API
-
-## 🚨 Gestion d'erreurs
-
-- Gestion centralisée des erreurs
-- Messages d'erreur utilisateur-friendly
-- Fallback en cas d'indisponibilité des services externes
-- Logs détaillés pour le débogage
-
-## 🧪 Tests
-
+### Le serveur ne démarre pas
 ```bash
-# Test de la configuration
-curl http://localhost:3001/health
+# Vérifier la configuration
+npm run check
 
-# Test du service formulaire
-curl http://localhost:3001/api/form/test
-
-# Test du service avis
-curl http://localhost:3001/api/reviews/test
+# Vérifier les logs pour identifier l'erreur
+npm run dev
 ```
 
-## 📈 Performance
+### Les emails ne s'envoient pas
+1. Vérifier `GMAIL_USER` et `GMAIL_PASSWORD` dans `.env`
+2. Vérifier que l'authentification 2FA est activée sur Gmail
+3. Vérifier que le mot de passe d'application est valide (16 caractères)
+4. Tester : `npm run test`
 
-- Cache des avis Google (15 minutes TTL)
-- Rate limiting adaptatif
-- Compression des réponses
-- Optimisation des requêtes base de données
+### Les avis Google ne fonctionnent pas
+1. C'est normal si `GOOGLE_API_KEY` et `GOOGLE_PLACE_ID` ne sont pas configurés
+2. L'API fonctionne en mode fallback avec des données de démonstration
+3. Pour activer les vrais avis, configurer l'API Google Places
 
-## 🔄 Mise à jour
+## 📝 Variables d'environnement
 
-```bash
-# Mise à jour des dépendances
-npm update
+### Obligatoires pour les emails
+- `GMAIL_USER` : Email Gmail
+- `GMAIL_PASSWORD` : Mot de passe d'application
+- `ADMIN_EMAIL` : Email de réception
 
-# Vérification des vulnérabilités
-npm audit
+### Optionnelles
+- `PORT` : Port du serveur (défaut: 3001)
+- `NODE_ENV` : Environnement (development/production)
+- `FRONTEND_URL` : URL du frontend (défaut: http://localhost:3000)
+- `GOOGLE_API_KEY` : Clé API Google Places
+- `GOOGLE_PLACE_ID` : Place ID Google
+- `COMPANY_NAME` : Nom de l'entreprise
+- `COMPANY_PHONE` : Téléphone
+- `COMPANY_EMAIL` : Email public
 
-# Correction automatique
-npm audit fix
-```
+## 📦 Dépendances principales
 
-## 📞 Support
+- **express** : Framework web
+- **nodemailer** : Envoi d'emails
+- **googleapis** : API Google Places
+- **express-validator** : Validation des données
+- **helmet** : Sécurité HTTP
+- **cors** : Gestion CORS
+- **express-rate-limit** : Limitation du débit
 
-Pour toute question technique :
-- Vérifier les logs du serveur
-- Tester les endpoints `/test`
-- Consulter la documentation des APIs utilisées
-- 📚 **Documentation complète** : [DOCUMENTATION.md](./DOCUMENTATION.md)
+## 🆘 Support
 
-## 📄 Licence
+Pour toute question sur la configuration :
+1. Vérifier la configuration : `npm run check`
+2. Lire les logs : `npm run dev`
+3. Tester l'API : `npm run test`
 
-Ce projet est sous licence privée MonsieurClim.
+---
+
+**Développé pour MonsieurClim - Expert en climatisation** 🌡️

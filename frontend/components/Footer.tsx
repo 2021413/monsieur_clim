@@ -1,6 +1,7 @@
 import * as React from "react";
 import Container from "./Container";
 import Link from "next/link";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 export default function Footer() {
   return (
@@ -54,11 +55,21 @@ export default function Footer() {
           <ul className="space-y-1 text-sm text-gray-300">
             <li><Link href="/legal/mentions-legales">Mentions légales</Link></li>
             <li><Link href="/legal/politique-confidentialite">Confidentialité</Link></li>
+            <li><Link href="/legal/politique-cookies">Politique de cookies</Link></li>
             <li><Link href="/legal/plan-du-site">Plan du site</Link></li>
           </ul>
         </div>
       </Container>
-      <div className="border-t border-gray-800 py-4 text-center text-xs text-gray-500">© {new Date().getFullYear()} Monsieur Clim. Tous droits réservés.</div>
+      <div className="border-t border-gray-800 py-4">
+        <Container>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-gray-500 text-center sm:text-left">
+              © {new Date().getFullYear()} Monsieur Clim. Tous droits réservés.
+            </p>
+            <CookieSettingsButton />
+          </div>
+        </Container>
+      </div>
     </footer>
   );
 }

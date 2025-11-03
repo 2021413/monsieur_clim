@@ -23,20 +23,31 @@ interface ServicesPageContentProps {
 
 export default function ServicesPageContent({ services }: ServicesPageContentProps) {
   const { ref: gridRef, isInView: gridInView } = useScrollAnimation({ amount: 0.1 });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src="/services/hero.jpg"
+            src={isMobile ? "/services/hero2.jpg" : "/services/hero.jpg"}
             alt="Services de climatisation et pompe à chaleur Monsieur Clim"
             fill
-            className="object-cover scale-125"
+            sizes="100vw"
+            className="object-cover scale-105 sm:scale-110"
             priority
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <motion.div
@@ -96,6 +107,7 @@ export default function ServicesPageContent({ services }: ServicesPageContentPro
                     src={service.image}
                     alt={service.title}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20">
