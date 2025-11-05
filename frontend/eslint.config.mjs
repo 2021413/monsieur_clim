@@ -10,7 +10,11 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+/** @type {import("eslint").Linter.Config[]} */
 const eslintConfig = [
+  {
+    ignores: ["node_modules/**", ".next/**", "dist/**", "out/**"],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
