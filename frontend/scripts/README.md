@@ -73,3 +73,6 @@ Les avis sont sauvegardés dans `data/google-reviews.json` :
 🔒 **Important** : Ne jamais commiter le fichier `.env.local` dans Git !
 Le fichier `.gitignore` est déjà configuré pour l'ignorer.
 
+
+
+

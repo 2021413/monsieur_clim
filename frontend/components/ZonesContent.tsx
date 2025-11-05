@@ -39,7 +39,10 @@ export default function ZonesContent() {
             className="object-cover scale-105"
             priority
         />
-        <div className="absolute inset-0 bg-black/50" />
+        {/* Overlay avec dégradé pour meilleur contraste */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30" />
+        
         <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
@@ -48,12 +51,12 @@ export default function ZonesContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <Heading level={1} className="mb-4 text-white">
+                <Heading level={1} className="mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                   Zones d'intervention
                 </Heading>
               </motion.div>
               <motion.p 
-                className="mb-6 text-lg text-white/90"
+                className="mb-6 text-lg text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -95,7 +98,7 @@ export default function ZonesContent() {
                     Intervention dans tout le Golfe de Saint-Tropez
                   </h3>
                   <p className="text-foreground/80 mb-4">
-                    Notre équipe couvre l'ensemble du territoire du Golfe de Saint-Tropez, des communes côtières prestigieuses aux villages de l'arrière-pays.
+                    Notre équipe couvre l'ensemble du Golfe de Saint-Tropez, des communes côtières prestigieuses aux villages de l'arrière-pays.
                   </p>
                 </div>
                 

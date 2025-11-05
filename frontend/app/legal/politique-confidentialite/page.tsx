@@ -175,7 +175,7 @@ export default function Page() {
                     <strong className="text-foreground">Monsieur Clim :</strong> Personnel habilité pour traiter votre demande
                   </li>
                   <li>
-                    <strong className="text-foreground">Prestataires techniques :</strong> Hébergeur (Vercel), 
+                    <strong className="text-foreground">Prestataires techniques :</strong> Hébergeur (OVH SAS), 
                     service d'analyse (Google Analytics)
                   </li>
                 </ul>

@@ -38,16 +38,13 @@ export default function Page() {
                   <strong className="text-foreground">Raison sociale :</strong> Monsieur Clim
                 </p>
                 <p>
-                  <strong className="text-foreground">Forme juridique :</strong> Auto-entrepreneur / SASU (à préciser)
+                  <strong className="text-foreground">Forme juridique :</strong> EURL (Entreprise Unipersonnelle à Responsabilité Limitée)
                 </p>
                 <p>
                   <strong className="text-foreground">Adresse du siège social :</strong> Golfe de Saint-Tropez, France
                 </p>
                 <p>
-                  <strong className="text-foreground">SIRET :</strong> [À compléter]
-                </p>
-                <p>
-                  <strong className="text-foreground">TVA intracommunautaire :</strong> [À compléter]
+                  <strong className="text-foreground">SIRET :</strong> 909 929 762 00013
                 </p>
                 <p>
                   <strong className="text-foreground">Téléphone :</strong>{" "}
@@ -97,20 +94,20 @@ export default function Page() {
               </h2>
               <div className="space-y-3 text-foreground/80">
                 <p>
-                  <strong className="text-foreground">Hébergeur :</strong> Vercel Inc.
+                  <strong className="text-foreground">Hébergeur :</strong> OVH SAS
                 </p>
                 <p>
-                  <strong className="text-foreground">Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, USA
+                  <strong className="text-foreground">Adresse :</strong> 2 rue Kellermann, 59100 Roubaix, France
                 </p>
                 <p>
                   <strong className="text-foreground">Site web :</strong>{" "}
                   <a 
-                    href="https://vercel.com" 
+                    href="https://www.ovhcloud.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-primary hover:text-primary/80 transition-colors"
                   >
-                    vercel.com
+                    ovhcloud.com
                   </a>
                 </p>
               </div>
