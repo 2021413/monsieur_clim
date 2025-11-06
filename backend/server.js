@@ -14,13 +14,36 @@ const { errorHandler } = require('./middlewares/errorHandler');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Configuration pour faire confiance au proxy (Nginx)
+app.set('trust proxy', true);
+
 // Configuration des middlewares de sécurité
 app.use(helmet());
 
-// Configuration CORS
+// Configuration CORS avec support multi-origines
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'https://monsieur-clim.fr',
+  'https://www.monsieur-clim.fr'
+].filter(Boolean); // Enlève les valeurs undefined
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  origin: function(origin, callback) {
+    // Autoriser les requêtes sans origin (Postman, curl, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('❌ CORS bloqué pour origin:', origin);
+      callback(new Error('Non autorisé par CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['X-RateLimit-Limit', 'X-RateLimit-Remaining'],
+  maxAge: 86400 // 24 heures de cache pour les requêtes preflight
 }));
 
 // Rate limiting
