@@ -28,13 +28,21 @@ export default function ContactForm({ title, description }: Props) {
       
       if (type === 'installation') {
         if (equip === 'pac-air-eau') typedemande = 'Pompe à chaleur air-eau';
-        else if (equip === 'pac-air-air') typedemande = 'Pompe à chaleur air-air';
+        else if (equip === 'pac-air-air') typedemande = 'Climatisation réversible';
         else if (equip === 'pac-piscine') typedemande = 'Pompe à chaleur piscine';
         else typedemande = 'Installation climatisation';
       } else if (type === 'entretien') {
-        typedemande = 'Entretien climatisation';
+        // Distinguer l'entretien selon le type d'équipement
+        if (equip === 'pac-air-air') typedemande = 'Entretien climatisation réversible';
+        else if (equip === 'pac-air-eau') typedemande = 'Entretien pompe à chaleur air-eau';
+        else if (equip === 'pac-piscine') typedemande = 'Entretien pompe à chaleur piscine';
+        else typedemande = 'Entretien climatisation';
       } else if (type === 'depannage') {
-        typedemande = 'Dépannage climatisation';
+        // Distinguer le dépannage selon le type d'équipement
+        if (equip === 'pac-air-air') typedemande = 'Dépannage climatisation réversible';
+        else if (equip === 'pac-air-eau') typedemande = 'Dépannage pompe à chaleur air-eau';
+        else if (equip === 'pac-piscine') typedemande = 'Dépannage pompe à chaleur piscine';
+        else typedemande = 'Dépannage climatisation';
       } else if (type === 'devis') {
         typedemande = 'Devis gratuit';
       }

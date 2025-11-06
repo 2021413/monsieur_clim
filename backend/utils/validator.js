@@ -93,8 +93,15 @@ const validateContactForm = (formData) => {
   // Validation du type de demande
   const validTypes = [
     'Installation climatisation',
-    'Dépannage climatisation', 
+    'Dépannage climatisation',
+    'Dépannage climatisation réversible',
+    'Dépannage pompe à chaleur air-eau',
+    'Dépannage pompe à chaleur piscine',
     'Entretien climatisation',
+    'Entretien climatisation réversible',
+    'Entretien pompe à chaleur air-eau',
+    'Entretien pompe à chaleur piscine',
+    'Climatisation réversible',
     'Pompe à chaleur air-air',
     'Pompe à chaleur air-eau',
     'Pompe à chaleur piscine',
@@ -109,12 +116,14 @@ const validateContactForm = (formData) => {
     });
   }
   
-  // Validation du message
-  if (!isValidLength(formData.message, 10, 1000)) {
-    errors.push({
-      field: 'message',
-      message: 'Le message doit contenir entre 10 et 1000 caractères'
-    });
+  // Validation du message (optionnel, mais minimum 10 caractères si fourni)
+  if (formData.message && formData.message.trim().length > 0) {
+    if (!isValidLength(formData.message, 10, 1000)) {
+      errors.push({
+        field: 'message',
+        message: 'Le message doit contenir entre 10 et 1000 caractères'
+      });
+    }
   }
   
   // Validation du code postal (optionnel)
