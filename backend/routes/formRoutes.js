@@ -38,8 +38,15 @@ const formValidationRules = [
     .withMessage('Le type de demande est obligatoire')
     .isIn([
       'Installation climatisation',
-      'Dépannage climatisation', 
+      'Dépannage climatisation',
+      'Dépannage climatisation réversible',
+      'Dépannage pompe à chaleur air-eau',
+      'Dépannage pompe à chaleur piscine',
       'Entretien climatisation',
+      'Entretien climatisation réversible',
+      'Entretien pompe à chaleur air-eau',
+      'Entretien pompe à chaleur piscine',
+      'Climatisation réversible',
       'Pompe à chaleur air-air',
       'Pompe à chaleur air-eau',
       'Pompe à chaleur piscine',
@@ -49,9 +56,8 @@ const formValidationRules = [
     .withMessage('Type de demande invalide'),
 
   body('message')
+    .optional()
     .trim()
-    .notEmpty()
-    .withMessage('Le message est obligatoire')
     .isLength({ min: 10, max: 1000 })
     .withMessage('Le message doit contenir entre 10 et 1000 caractères'),
 
