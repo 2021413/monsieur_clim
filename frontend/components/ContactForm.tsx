@@ -12,12 +12,24 @@ interface Props {
 
 export default function ContactForm({ title, description }: Props) {
   const [state, setState] = React.useState<"idle" | "loading" | "success" | "error">("idle");
+  const [messageLength, setMessageLength] = React.useState(0);
+  const [messageError, setMessageError] = React.useState("");
   
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("loading");
+    setMessageError("");
+    
     try {
       const fd = new FormData(e.currentTarget);
+      const messageValue = (fd.get('message') as string) || '';
+      
+      // Validation côté client pour un meilleur UX
+      if (messageValue.trim().length > 0 && messageValue.trim().length < 10) {
+        setMessageError("Le message doit contenir au moins 10 caractères");
+        setState("idle");
+        return;
+      }
       
       // Préparation des données pour l'API backend
       const type = fd.get('type') as string;
@@ -52,12 +64,11 @@ export default function ContactForm({ title, description }: Props) {
         email: fd.get('email') as string,
         telephone: fd.get('phone') as string,
         typedemande: typedemande,
-        message: fd.get('message') as string
+        message: messageValue
       };
 
       // Appel à l'API backend  
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
-      console.log('📤 Envoi des données:', formData);
       
       const response = await fetch(`${backendUrl}/api/form/submit`, {
         method: 'POST',
@@ -68,22 +79,25 @@ export default function ContactForm({ title, description }: Props) {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        console.error('❌ Erreur backend:', {
-          status: response.status,
-          statusText: response.statusText,
-          errorData
-        });
         throw new Error(`Erreur HTTP: ${response.status}`);
       }
 
-      const result = await response.json();
-      console.log('✅ Réponse backend:', result);
+      await response.json();
       setState("success");
+      setMessageLength(0);
       (e.target as HTMLFormElement).reset();
     } catch (error) {
-      console.error('❌ Erreur lors de la soumission:', error);
       setState("error");
+    }
+  }
+
+  function handleMessageChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    const value = e.target.value;
+    setMessageLength(value.length);
+    
+    // Réinitialiser l'erreur si l'utilisateur corrige
+    if (messageError && (value.length === 0 || value.length >= 10)) {
+      setMessageError("");
     }
   }
 
@@ -211,15 +225,36 @@ export default function ContactForm({ title, description }: Props) {
             </div>
             
             <div className="space-y-3">
-              <label htmlFor="message" className="block text-sm font-medium text-foreground/80">
-                Décrivez votre projet
-              </label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground/80">
+                  Décrivez votre projet
+                </label>
+                {messageLength > 0 && (
+                  <span className={`text-xs ${messageLength < 10 ? 'text-amber-400' : messageLength > 900 ? 'text-amber-400' : 'text-muted'}`}>
+                    {messageLength}/1000
+                  </span>
+                )}
+              </div>
               <Textarea
                 id="message"
                 name="message"
                 placeholder="Détaillez votre besoin : ville, surface, marque souhaitée, budget approximatif, disponibilités..."
                 rows={5}
+                onChange={handleMessageChange}
               />
+              {messageError && (
+                <p className="text-sm text-amber-400 flex items-center gap-2 mt-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  {messageError}
+                </p>
+              )}
+              {messageLength > 0 && messageLength < 10 && !messageError && (
+                <p className="text-xs text-muted mt-2">
+                  Encore {10 - messageLength} caractère{10 - messageLength > 1 ? 's' : ''} minimum
+                </p>
+              )}
             </div>
           </div>
 

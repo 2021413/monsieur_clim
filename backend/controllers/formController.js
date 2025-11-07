@@ -11,13 +11,9 @@ class FormController {
    */
   async submitForm(req, res, next) {
     try {
-      // Log des données reçues (debug)
-      console.log('📨 Données reçues:', JSON.stringify(req.body, null, 2));
-      
       // Vérification des erreurs de validation
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.error('❌ Erreurs de validation:', JSON.stringify(errors.array(), null, 2));
         return res.status(400).json({
           success: false,
           message: 'Données de formulaire invalides',
