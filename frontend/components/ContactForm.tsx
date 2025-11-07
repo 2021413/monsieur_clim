@@ -57,6 +57,8 @@ export default function ContactForm({ title, description }: Props) {
 
       // Appel à l'API backend  
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+      console.log('📤 Envoi des données:', formData);
+      
       const response = await fetch(`${backendUrl}/api/form/submit`, {
         method: 'POST',
         headers: {
@@ -66,13 +68,21 @@ export default function ContactForm({ title, description }: Props) {
       });
 
       if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        console.error('❌ Erreur backend:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorData
+        });
         throw new Error(`Erreur HTTP: ${response.status}`);
       }
 
-      await response.json();
+      const result = await response.json();
+      console.log('✅ Réponse backend:', result);
       setState("success");
       (e.target as HTMLFormElement).reset();
     } catch (error) {
+      console.error('❌ Erreur lors de la soumission:', error);
       setState("error");
     }
   }

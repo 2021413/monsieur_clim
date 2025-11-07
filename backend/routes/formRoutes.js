@@ -56,7 +56,7 @@ const formValidationRules = [
     .withMessage('Type de demande invalide'),
 
   body('message')
-    .optional()
+    .optional({ checkFalsy: true })
     .trim()
     .isLength({ min: 10, max: 1000 })
     .withMessage('Le message doit contenir entre 10 et 1000 caractères'),
@@ -87,6 +87,9 @@ const formValidationRules = [
 
 // POST /api/form/submit - Soumission du formulaire de contact
 router.post('/submit', formValidationRules, formController.submitForm);
+
+// POST /api/form/validate - Validation des données sans envoi d'email (debug)
+router.post('/validate', formValidationRules, formController.validateForm);
 
 // GET /api/form/types - Récupération des types de demandes disponibles
 router.get('/types', formController.getFormTypes);

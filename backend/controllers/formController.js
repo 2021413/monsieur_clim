@@ -11,9 +11,13 @@ class FormController {
    */
   async submitForm(req, res, next) {
     try {
+      // Log des données reçues (debug)
+      console.log('📨 Données reçues:', JSON.stringify(req.body, null, 2));
+      
       // Vérification des erreurs de validation
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
+        console.error('❌ Erreurs de validation:', JSON.stringify(errors.array(), null, 2));
         return res.status(400).json({
           success: false,
           message: 'Données de formulaire invalides',
@@ -101,6 +105,38 @@ class FormController {
       res.status(500).json({
         success: false,
         message: 'Erreur lors du test du service'
+      });
+    }
+  }
+
+  /**
+   * Endpoint de debug pour tester la validation sans envoyer d'emails
+   * POST /api/form/validate
+   */
+  async validateForm(req, res) {
+    try {
+      // Vérification des erreurs de validation
+      const errors = validationResult(req);
+      
+      if (!errors.isEmpty()) {
+        return res.status(200).json({
+          success: false,
+          message: 'Validation échouée',
+          errors: errors.array(),
+          receivedData: req.body
+        });
+      }
+
+      return res.status(200).json({
+        success: true,
+        message: 'Validation réussie - les données sont valides',
+        receivedData: req.body
+      });
+    } catch (error) {
+      console.error('❌ Erreur validation:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Erreur lors de la validation'
       });
     }
   }
