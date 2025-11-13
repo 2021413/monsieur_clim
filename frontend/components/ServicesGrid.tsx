@@ -17,21 +17,21 @@ export default function ServicesGrid() {
       description: "Climatisation PAC air/air, PAC air/eau, PAC piscine",
       tagline: "Un confort optimal pour votre habitat",
       href: "/services/installation",
-      image: "/services/installation/installation1.jpg"
+      image: "/services/installation/installation1.webp"
     },
     {
       title: "Entretien",
       description: "Contrats & maintenances toutes marques",
       tagline: "La durabilité de vos équipements assurée",
       href: "/services/entretien",
-      image: "/services/entretien/entretien1.jpg"
+      image: "/services/entretien/entretien1.webp"
     },
     {
       title: "Dépannage",
       description: "Diagnostic & réparation rapides",
       tagline: "Une intervention rapide et efficace",
       href: "/services/depannage",
-      image: "/services/depannage/depannage1.jpg"
+      image: "/services/depannage/depannage1.webp"
     },
   ];
   

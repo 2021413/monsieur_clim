@@ -38,7 +38,7 @@ export default function Page() {
             url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://monsieurclim.fr"),
             telephone: "+33615938538",
             image: [
-              (process.env.NEXT_PUBLIC_SITE_URL ?? "https://monsieurclim.fr") + "/services/hero.jpg"
+              (process.env.NEXT_PUBLIC_SITE_URL ?? "https://monsieurclim.fr") + "/services/hero.webp"
             ],
             address: {
               "@type": "PostalAddress",

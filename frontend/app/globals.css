@@ -133,3 +133,19 @@ body {
 .entretien-hero-carousel {
   animation: carouselSlide 16s ease-in-out infinite;
 }
+
+/* Animation pour le changement d'onglet dans les cookies */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}

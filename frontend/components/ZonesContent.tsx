@@ -32,7 +32,7 @@ export default function ZonesContent() {
       {/* Hero Section */}
       <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src="/zones/hero.jpg"
+            src="/zones/hero.webp"
             alt="Pompe à chaleur Air/Air"
             fill
             sizes="100vw"

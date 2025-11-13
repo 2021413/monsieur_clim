@@ -43,7 +43,7 @@ export const metadata: Metadata = {
       "Installation, entretien et dépannage – Golfe de Saint‑Tropez. Mitsubishi, Daikin, Heiwa. Toutes marques entretenues et dépannées.",
     images: [
       {
-        url: "/services/hero.jpg",
+        url: "/services/hero.webp",
         width: 1200,
         height: 630,
         alt: "Monsieur Clim – Climatisation & PAC",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "Monsieur Clim – Climatisation & PAC",
     description:
       "Installation, entretien et dépannage – Golfe de Saint‑Tropez. Mitsubishi, Daikin, Heiwa.",
-    images: ["/services/hero.jpg"],
+    images: ["/services/hero.webp"],
   },
   icons: {
     icon: "/favicon.png",

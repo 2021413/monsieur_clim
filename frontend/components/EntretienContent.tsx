@@ -23,19 +23,19 @@ interface EntretienContentProps {
 function EntretienHeroSection() {
   const images = [
     {
-      src: "/services/entretien/hero1.jpg",
+      src: "/services/entretien/hero1.webp",
       alt: "Entretien climatisation - Nettoyage des filtres"
     },
     {
-      src: "/services/entretien/hero2.jpg", 
+      src: "/services/entretien/hero2.webp", 
       alt: "Entretien climatisation - Vérification technique"
     },
     {
-      src: "/services/entretien/hero3.jpg",
+      src: "/services/entretien/hero3.webp",
       alt: "Entretien climatisation - Maintenance extérieure"
     },
     {
-      src: "/services/entretien/hero4.jpg",
+      src: "/services/entretien/hero4.webp",
       alt: "Entretien climatisation - Contrôle qualité"
     }
   ];
@@ -121,7 +121,7 @@ export default function EntretienContent({ features, maintenanceSteps }: Entreti
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/services/entretien/entretien2.png"
+              src="/services/entretien/entretien2.webp"
               alt="entretien avant/après"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

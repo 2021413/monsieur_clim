@@ -10,31 +10,31 @@ import Link from "next/link";
 
 const HERO_IMAGES = [
     {
-  src: "/hero/clim1.jpg",
+  src: "/hero/clim1.webp",
   alt: "Système de climatisation intégré"
   },
   {
-    src: "/hero/clim2.jpg",
+    src: "/hero/clim2.webp",
     alt: "Climatisation murale contemporaine"
   },
   {
-    src: "/hero/clim3.jpg",
+    src: "/hero/clim3.webp",
     alt: "Installation climatisation design moderne"
   },
   {
-    src: "/hero/clim4.jpg",
+    src: "/hero/clim4.webp",
     alt: "Installation climatisation résidentielle"
   },
   {
-    src: "/hero/clim5.jpg",
+    src: "/hero/clim5.webp",
     alt: "Climatisation moderne avec technologie avancée"
   },
   {
-    src: "/hero/clim6.jpg",
+    src: "/hero/clim6.webp",
     alt: "Installation climatisation élégante"
   },
   {
-    src: "/hero/clim7.jpg",
+    src: "/hero/clim7.webp",
     alt: "Système climatisation haute performance"
   }
 ];

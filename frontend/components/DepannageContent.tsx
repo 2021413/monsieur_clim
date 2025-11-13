@@ -26,7 +26,7 @@ export default function DepannageContent({ features, processSteps }: DepannageCo
       <AnimatedHeroSection
         title="Dépannage et Réparation"
         description="Une équipe de techniciens qualifiés pour un dépannage rapide et efficace de votre installation."
-        imageSrc="/services/depannage/hero.jpg"
+        imageSrc="/services/depannage/hero.webp"
         imageAlt="Dépannage climatisation et PAC"
         buttonText="Demander une intervention"
       />
@@ -48,7 +48,7 @@ export default function DepannageContent({ features, processSteps }: DepannageCo
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/services/depannage/depannage2.jpg"
+              src="/services/depannage/depannage2.webp"
               alt="image de dépannage"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

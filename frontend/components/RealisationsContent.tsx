@@ -25,7 +25,7 @@ export default function RealisationsContent({ realisations }: RealisationsConten
       {/* Hero Section */}
       <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src="/realisations/hero.jpg"
+            src="/realisations/hero.webp"
             alt="Réalisations Monsieur Clim - Installations climatisation et pompes à chaleur"
             fill
             sizes="100vw"

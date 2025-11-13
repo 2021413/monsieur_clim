@@ -39,7 +39,7 @@ export default function ServicesPageContent({ services }: ServicesPageContentPro
       {/* Hero Section */}
       <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src={isMobile ? "/services/hero2.jpg" : "/services/hero.jpg"}
+            src={isMobile ? "/services/hero2.webp" : "/services/hero.webp"}
             alt="Services de climatisation et pompe à chaleur Monsieur Clim"
             fill
             sizes="100vw"

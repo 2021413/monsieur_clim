@@ -40,7 +40,7 @@ function InstallationHeroSection() {
           {/* Image avant */}
           <div className="w-1/2 h-full relative">
             <Image
-              src={isMobile ? "/services/installation/installation_avant_mobile.jpg" : "/services/installation/installation_avant.jpg"}
+              src={isMobile ? "/services/installation/installation_avant_mobile.webp" : "/services/installation/installation_avant.webp"}
               alt="Installation avant - Avant les travaux"
               fill
               sizes="100vw"
@@ -51,7 +51,7 @@ function InstallationHeroSection() {
           {/* Image après */}
           <div className="w-1/2 h-full relative">
             <Image
-              src={isMobile ? "/services/installation/installation_apres_mobile.jpg" : "/services/installation/installation_apres.jpg"}
+              src={isMobile ? "/services/installation/installation_apres_mobile.webp" : "/services/installation/installation_apres.webp"}
               alt="Installation après - Après les travaux"
               fill
               sizes="100vw"
@@ -123,7 +123,7 @@ export default function InstallationContent({ features, processSteps }: Installa
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/services/installation/installation2.jpg"
+              src="/services/installation/installation2.webp"
               alt="Technicien installation climatisation"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -18,7 +18,7 @@ export default function ContactContent() {
       {/* Hero Section */}
       <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src="/contact/hero.jpg"
+            src="/contact/hero.webp"
             alt="Contactez Monsieur Clim - Expert climatisation Golfe de Saint-Tropez"
             fill
             sizes="100vw"

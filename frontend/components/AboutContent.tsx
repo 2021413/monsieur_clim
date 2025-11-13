@@ -43,7 +43,7 @@ export default function AboutContent() {
       {/* Hero Section */}
       <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
         <Image
-            src="/about/about_hero.jpg"
+            src="/about/about_hero.webp"
             alt="À propos de Monsieur Clim - Expert climatisation Golfe de Saint-Tropez"
             fill
             sizes="100vw"
@@ -95,7 +95,7 @@ export default function AboutContent() {
               <div className="relative w-full rounded-xl overflow-hidden bg-gray-100">
                 <div className="aspect-[16/9]">
                   <Image
-                    src="/about/mr_clim.jpg"
+                    src="/about/mr_clim.webp"
                     alt="Nicolas Lounes - Monsieur Clim, expert climatisation Golfe de Saint-Tropez"
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
@@ -157,7 +157,7 @@ export default function AboutContent() {
             <div className="grid gap-12 md:grid-cols-2 items-center">
               <div className="relative h-[400px]">
                 <Image
-                  src="/about/about_engagement.jpg"
+                  src="/about/about_engagement.webp"
                   alt="Service de climatisation dans le Golfe de Saint-Tropez"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

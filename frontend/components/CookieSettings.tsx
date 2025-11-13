@@ -16,6 +16,7 @@ export default function CookieSettings() {
   const [localConsent, setLocalConsent] = useState<CookieConsent>(consent);
   const [activeTab, setActiveTab] = useState<'overview' | 'details'>('overview');
   const [isVisible, setIsVisible] = useState(false);
+  const contentRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (showSettings) {
@@ -25,6 +26,13 @@ export default function CookieSettings() {
       setIsVisible(false);
     }
   }, [showSettings, consent]);
+
+  // Scroll vers le haut lors du changement d'onglet
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [activeTab]);
 
   if (!showSettings) return null;
 
@@ -91,13 +99,15 @@ export default function CookieSettings() {
         className={`fixed inset-0 z-[9999] flex items-center justify-center p-4 pointer-events-none`}
       >
         <div
-          className={`bg-gradient-to-br from-[#1a2332] to-[#0f1419] rounded-2xl shadow-2xl border border-primary/20 w-full max-w-4xl max-h-[90vh] overflow-hidden pointer-events-auto transform transition-all duration-300 ${
+          className={`bg-gradient-to-br from-[#1a2332] to-[#0f1419] rounded-2xl shadow-2xl border border-primary/20 w-full max-w-4xl h-[90vh] sm:h-[85vh] flex flex-col pointer-events-auto transform transition-all duration-300 overflow-hidden ${
             isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
           }`}
         >
+          {/* Barre décorative en haut */}
+          <div className="h-1 bg-gradient-to-r from-primary via-accent to-secondary flex-shrink-0" />
+          
           {/* En-tête */}
-          <div className="relative border-b border-white/10">
-            <div className="h-1 bg-gradient-to-r from-primary via-accent to-secondary" />
+          <div className="border-b border-white/10 flex-shrink-0">
             <div className="p-6">
               <div className="flex items-start justify-between">
                 <div>
@@ -144,10 +154,11 @@ export default function CookieSettings() {
           </div>
 
           {/* Contenu */}
-          <div className="overflow-y-auto max-h-[calc(90vh-220px)] p-6">
-            {activeTab === 'overview' ? (
-              <div className="space-y-4">
-                {cookieCategories.map((category) => {
+          <div ref={contentRef} className="flex-1 overflow-y-auto p-6 min-h-0 scroll-smooth">
+            <div key={activeTab} className="animate-fadeIn">
+              {activeTab === 'overview' ? (
+                <div className="space-y-4">
+                  {cookieCategories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <div
@@ -248,10 +259,11 @@ export default function CookieSettings() {
                 })}
               </div>
             )}
+            </div>
           </div>
 
           {/* Pied de page avec boutons */}
-          <div className="border-t border-white/10 p-6 bg-white/5">
+          <div className="border-t border-white/10 p-6 bg-white/5 flex-shrink-0">
             <div className="flex flex-col sm:flex-row gap-3 justify-between">
               <div className="flex gap-3">
                 <button

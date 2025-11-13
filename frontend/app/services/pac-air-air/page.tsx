@@ -53,7 +53,7 @@ export default function Page() {
       <AnimatedHeroSection
         title="Pompe à Chaleur Air/Air"
         description="La solution idéale pour chauffer et climatiser votre intérieur avec un seul système performant et économique."
-        imageSrc="/services/pac_air_air/hero.jpg"
+        imageSrc="/services/pac_air_air/hero.webp"
         imageAlt="Pompe à chaleur Air/Air"
       />
 
@@ -74,7 +74,7 @@ export default function Page() {
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/services/pac_air_air/air_air2.jpg"
+              src="/services/pac_air_air/air_air2.webp"
               alt="Installation PAC Air/Air"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
