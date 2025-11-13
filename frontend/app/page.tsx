@@ -143,12 +143,12 @@ export default function Page() {
       
       {/* Preuves / différenciants */}
       <Section gradient="primary">
-        <AnimatedSection animation="slideUp" delay={0.1}>
+        <AnimatedSection animation="fadeIn" delay={0.1}>
           <Heading level={2} className="mb-8 text-center">
             Pourquoi choisir Monsieur Clim ?
           </Heading>
         </AnimatedSection>
-        <AnimatedSection animation="stagger" delay={0.3} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               title: "Devis gratuit",
@@ -170,10 +170,11 @@ export default function Page() {
               text: "Mitsubishi, Daikin, Heiwa.",
               icon: "🤝"
             },
-          ].map((b) => (
+          ].map((b, index) => (
             <AnimatedSection
               key={b.title}
-              animation="staggerItem"
+              animation="fadeIn"
+              delay={0.2 + (index * 0.05)}
               className="rounded-xl bg-background/50 border border-primary/10 hover:border-primary/20 p-6 transition-all duration-300"
             >
               <h3 className="font-display text-lg text-primary mb-2 flex items-center gap-2">
@@ -185,7 +186,7 @@ export default function Page() {
               <p className="text-sm text-foreground/70">{b.text}</p>
             </AnimatedSection>
           ))}
-        </AnimatedSection>
+        </div>
       </Section>
 
       {/* Bloc mise en avant */}

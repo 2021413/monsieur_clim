@@ -13,14 +13,43 @@
   --text-dark: #1F2937;
 }
 
+html {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  padding-top: 80px; /* Espace pour le header fixe */
+  padding-top: 80px;
+  overscroll-behavior: none;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Styles minimaux pour la carte */
+header {
+  width: 100%;
+  max-width: 100%;
+}
+
+@supports (height: 100dvh) {
+  .dynamic-vh {
+    height: calc(100dvh + 128px) !important;
+  }
+}
+
+@supports not (height: 100dvh) {
+  .dynamic-vh {
+    height: calc(var(--vh, 1vh) * 100 + 128px) !important;
+  }
+}
+
+img {
+  content-visibility: auto;
+}
+
 .leaflet-control-container.hide-controls,
 .leaflet-pane.leaflet-marker-pane {
   display: none;
@@ -30,7 +59,6 @@ body {
   outline: none;
 }
 
-/* Styles des boutons de zoom */
 .leaflet-control-zoom {
   border: none !important;
   margin-right: 20px !important;
@@ -38,7 +66,6 @@ body {
   z-index: 500 !important;
 }
 
-/* Force z-index pour tous les contrôles Leaflet */
 .leaflet-control-zoom,
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
@@ -46,7 +73,6 @@ body {
   z-index: 500 !important;
 }
 
-/* Masquer l'attribution Leaflet */
 .leaflet-control-attribution {
   display: none !important;
 }
@@ -76,18 +102,11 @@ body {
   margin-bottom: 10px !important;
 }
 
-/* Animation pour la transition avant/après des installations */
 @keyframes slideTransition {
-  0% { 
+  0%, 45% { 
     transform: translateX(0); 
   }
-  45% { 
-    transform: translateX(0); 
-  }
-  50% { 
-    transform: translateX(-50%); 
-  }
-  95% { 
+  50%, 95% { 
     transform: translateX(-50%); 
   }
   100% { 
@@ -99,30 +118,17 @@ body {
   animation: slideTransition 10s ease-in-out infinite;
 }
 
-/* Animation pour le défilement des 4 images d'entretien */
 @keyframes carouselSlide {
-  0% { 
+  0%, 20% { 
     transform: translateX(0); 
   }
-  20% { 
-    transform: translateX(0); 
-  }
-  25% { 
+  25%, 45% { 
     transform: translateX(-25%); 
   }
-  45% { 
-    transform: translateX(-25%); 
-  }
-  50% { 
+  50%, 70% { 
     transform: translateX(-50%); 
   }
-  70% { 
-    transform: translateX(-50%); 
-  }
-  75% { 
-    transform: translateX(-75%); 
-  }
-  95% { 
+  75%, 95% { 
     transform: translateX(-75%); 
   }
   100% { 
@@ -134,7 +140,6 @@ body {
   animation: carouselSlide 16s ease-in-out infinite;
 }
 
-/* Animation pour le changement d'onglet dans les cookies */
 @keyframes fadeIn {
   from {
     opacity: 0;

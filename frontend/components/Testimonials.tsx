@@ -75,15 +75,16 @@ export default function Testimonials() {
         </div>
       </AnimatedSection>
 
-      <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-        {/* Carrousel principal d'avis */}
-        <motion.div 
-          ref={sectionRef}
-          initial="hidden"
-          animate={sectionInView ? "visible" : "hidden"}
-          variants={testimonialVariants}
-          className="relative min-h-[350px] sm:min-h-[400px] lg:h-[400px] rounded-2xl border border-primary/10 bg-gradient-to-br from-background to-primary/5 p-4 sm:p-6 lg:p-8 flex flex-col justify-center shadow-lg"
-        >
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          {/* Carrousel principal d'avis */}
+          <AnimatedSection animation="fadeIn" delay={0.1}>
+          <motion.div 
+            ref={sectionRef}
+            initial="hidden"
+            animate={sectionInView ? "visible" : "hidden"}
+            variants={testimonialVariants}
+            className="relative min-h-[350px] sm:min-h-[400px] lg:h-[400px] rounded-2xl border border-primary/10 bg-gradient-to-br from-background to-primary/5 p-4 sm:p-6 lg:p-8 flex flex-col justify-center shadow-lg"
+          >
           <div className="relative flex-1 flex items-center">
             <div className="w-full">
               {testimonials.map((testimonial, index) => (
@@ -132,15 +133,17 @@ export default function Testimonials() {
             ))}
           </div>
         </motion.div>
+        </AnimatedSection>
 
-        {/* Grille des avis récents */}
-        <AnimatedSection animation="stagger" delay={0.4} className="space-y-3 sm:space-y-4">
-          {testimonials.slice(0, 3).map((testimonial, index) => (
-            <AnimatedSection
-              key={testimonial.name}
-              animation="staggerItem"
-              className="p-4 sm:p-6 rounded-xl bg-background/50 border border-secondary/10 hover:border-secondary/20 transition-all duration-300"
-            >
+          {/* Grille des avis récents */}
+          <div className="space-y-3 sm:space-y-4">
+            {testimonials.slice(0, 3).map((testimonial, index) => (
+              <AnimatedSection
+                key={testimonial.name}
+                animation="fadeIn"
+                delay={0.2 + (index * 0.1)}
+                className="p-4 sm:p-6 rounded-xl bg-background/50 border border-secondary/10 hover:border-secondary/20 transition-all duration-300"
+              >
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white font-semibold text-sm sm:text-base">
@@ -169,10 +172,10 @@ export default function Testimonials() {
               </div>
             </AnimatedSection>
           ))}
-          
-          {/* Lien vers plus d'avis */}
-          <AnimatedSection animation="slideUp" delay={0.6}>
-            <div className="text-center pt-4">
+            
+            {/* Lien vers plus d'avis */}
+            <AnimatedSection animation="fadeIn" delay={0.5}>
+              <div className="text-center pt-4">
               <a 
                 href="https://share.google/QeN1rZMnxvairuSF6" 
                 target="_blank" 
@@ -184,7 +187,7 @@ export default function Testimonials() {
               </a>
             </div>
           </AnimatedSection>
-        </AnimatedSection>
+        </div>
       </div>
     </div>
   );

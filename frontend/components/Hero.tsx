@@ -9,59 +9,78 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HERO_IMAGES = [
-    {
-  src: "/hero/clim1.webp",
-  alt: "Système de climatisation intégré"
+  {
+    desktop: "/hero/clim1.webp",
+    mobile: "/hero/clim1_mobile.webp",
+    alt: "Système de climatisation intégré"
   },
   {
-    src: "/hero/clim2.webp",
+    desktop: "/hero/clim2.webp",
+    mobile: "/hero/clim2_mobile.webp",
     alt: "Climatisation murale contemporaine"
   },
   {
-    src: "/hero/clim3.webp",
+    desktop: "/hero/clim3.webp",
+    mobile: "/hero/clim3_mobile.webp",
     alt: "Installation climatisation design moderne"
   },
   {
-    src: "/hero/clim4.webp",
+    desktop: "/hero/clim4.webp",
+    mobile: "/hero/clim4_mobile.webp",
     alt: "Installation climatisation résidentielle"
   },
   {
-    src: "/hero/clim5.webp",
+    desktop: "/hero/clim5.webp",
+    mobile: "/hero/clim5_mobile.webp",
     alt: "Climatisation moderne avec technologie avancée"
   },
   {
-    src: "/hero/clim6.webp",
+    desktop: "/hero/clim6.webp",
+    mobile: "/hero/clim6_mobile.webp",
     alt: "Installation climatisation élégante"
   },
   {
-    src: "/hero/clim7.webp",
+    desktop: "/hero/clim7.webp",
+    mobile: "/hero/clim7_mobile.webp",
     alt: "Système climatisation haute performance"
   }
 ];
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
+    // Détection de la taille d'écran
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const interval = setInterval(() => {
       setCurrentImageIndex((current) => (current + 1) % HERO_IMAGES.length);
     }, 5000); // Change d'image toutes les 5 secondes
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   return (
-    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[600px] sm:min-h-[700px]" style={{height: 'calc(100vh + 128px)'}}>
+    <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[600px] sm:min-h-[700px] dynamic-vh">
       {/* Images de fond avec transition */}
       {HERO_IMAGES.map((image, index) => (
         <div
-          key={image.src}
+          key={`${image.desktop}-${index}`}
           className={`absolute inset-0 transition-opacity duration-1000 ${
             index === currentImageIndex ? "opacity-100" : "opacity-0"
           }`}
         >
           <Image 
-            src={image.src} 
+            src={isMobile ? image.mobile : image.desktop}
             alt={image.alt} 
             fill
             sizes="100vw"
@@ -74,7 +93,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/50" />
       
       {/* Contenu */}
-      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[600px] sm:min-h-[700px]" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[600px] sm:min-h-[700px] dynamic-vh">
         <div className="w-full max-w-7xl mx-auto">
           <div className="max-w-2xl">
             <motion.div

@@ -10,38 +10,35 @@ export default function MainNav() {
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
-    // Vérifier que nous sommes côté client
     if (typeof window === 'undefined') return;
     
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     
-    // Initialiser l'état basé sur la position actuelle du scroll
     handleScroll();
-    
     window.addEventListener("scroll", handleScroll);
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header 
       className={`
-        fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ease-in-out
-        ${scrolled 
-          ? 'backdrop-blur-xl shadow-2xl' 
-          : ' backdrop-blur-md'
-        }
+        fixed top-0 left-0 right-0 z-[1000] w-full max-w-full overflow-hidden
+        transition-all duration-300 ease-in-out
+        ${scrolled ? 'backdrop-blur-xl shadow-2xl' : 'backdrop-blur-md'}
       `}
     >
       <Container className={`
         flex items-center justify-between relative transition-all duration-300
-        ${scrolled ? 'h-16' : 'h-20'}
+        ${scrolled ? 'h-16 py-0' : 'h-20 py-0'}
       `}>
         {/* Logo */}
         <Link 
           href="/" 
           className="flex items-center gap-3 group transition-transform duration-300 hover:scale-105"
+          onClick={() => setOpen(false)}
         >
           <div className="relative">
             <Image 
@@ -91,6 +88,7 @@ export default function MainNav() {
         <div className="hidden xl:flex items-center gap-4">
           <Link 
             href="/contact"
+            onClick={() => setOpen(false)}
             className="
               group relative inline-flex items-center justify-center 
               rounded-full px-6 py-2.5 text-sm font-semibold 

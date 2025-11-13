@@ -30,20 +30,22 @@ export default function ZonesContent() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
+      <div className="relative overflow-hidden -mt-32 [&_header]:bg-black/80 [&_header]:border-0 min-h-[500px] sm:min-h-[600px] dynamic-vh">
         <Image
             src="/zones/hero.webp"
             alt="Pompe à chaleur Air/Air"
             fill
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px"
             className="object-cover scale-105"
-            priority
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL="data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA="
         />
-        {/* Overlay avec dégradé pour meilleur contraste */}
+        {/* Overlay pour améliorer la lisibilité */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/40" />
         
-        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px]" style={{height: 'calc(100vh + 128px)'}}>
+        <div className="relative z-10 flex items-center px-4 sm:px-6 lg:px-8 min-h-[500px] sm:min-h-[600px] dynamic-vh">
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <motion.div
@@ -51,17 +53,17 @@ export default function ZonesContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <Heading level={1} className="mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                <Heading level={1} className="mb-4 text-white">
                   Zones d'intervention
                 </Heading>
               </motion.div>
               <motion.p 
-                className="mb-6 text-lg text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
+                className="mb-6 text-lg text-white/90"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Monsieur Clim intervient dans tout le Golfe de Saint-Tropez et les communes environnantes pour vos besoins en climatisation et pompes à chaleur. De la côte (Saint-Tropez à Rayol-Canadel) aux villages de l'arrière-pays (La Môle, La Garde-Freinet, Le Plan-de-la-Tour), notre équipe se déplace rapidement.
+                Monsieur Clim intervient dans tout le Golfe de Saint-Tropez et les communes environnantes. De la côte aux villages de l'arrière-pays, notre équipe se déplace rapidement.
               </motion.p>
             </div>
           </div>

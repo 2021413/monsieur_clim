@@ -3,6 +3,7 @@ import "./globals.css";
 import MainNav from "@/components/MainNav";
 import Footer from "@/components/Footer";
 import CookieProvider from "@/components/CookieProvider";
+import ViewportHeightFix from "@/components/ViewportHeightFix";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://monsieurclim.fr"),
@@ -76,6 +77,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="antialiased">
+        <ViewportHeightFix />
         <CookieProvider>
           <MainNav />
           {children}
