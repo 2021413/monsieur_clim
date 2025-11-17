@@ -46,9 +46,7 @@ header {
   }
 }
 
-img {
-  content-visibility: auto;
-}
+/* Retiré content-visibility pour éviter que les images disparaissent hors du viewport */
 
 .leaflet-control-container.hide-controls,
 .leaflet-pane.leaflet-marker-pane {

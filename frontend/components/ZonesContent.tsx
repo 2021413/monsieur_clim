@@ -37,9 +37,7 @@ export default function ZonesContent() {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px"
             className="object-cover scale-105"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA="
+            priority
         />
         {/* Overlay pour améliorer la lisibilité */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50" />
